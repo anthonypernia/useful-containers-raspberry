@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  samba:
+    image: dperson/samba:rpi
+    restart: always
+    command: '-u "anthony;password" -s "media;/media;yes;no"'
+    stdin_open: true
+    tty: true
+    environment:
+      - PERMISSIONS=0777
+    ports:
+      - 139:130
+      - 445:445
+    volumes:
+      - /usr/share/zoneinfo/America/Argentina/Buenos_Aires:/etc/localtime
+      - /mnt/anthony-storage:/media
