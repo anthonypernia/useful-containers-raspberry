@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  rtorrent:
+    image: pablokbs/rutorrent-armhf
+    ports:
+      - 8088:80
+      - 51413:51413
+      - 6881:6881/udp
+    volumes:
+      - /mnt/anthony-storage/config/rutorrent_config:/config/rtorrent
+      - /mnt/anthony-storage/downloads:/downloads
+    restart: always
