@@ -1,0 +1,28 @@
+version: '3'
+services:
+  netdata:
+    image: netdata/netdata
+    container_name: netdata
+    hostname: example.com # set to fqdn of host
+    ports:
+      - 19999:19999
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE
+    environment:
+      - VIRTUAL_PORT=19999
+      - DOCKER_HOST=proxy:2375
+      - PGID=999
+      - VIRTUALIZATION=kvm
+      - TZ=America/Argentina/Buenos_Aires
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /mnt/anthony-storage/config/netdata-config/netdataconfig:/etc/netdata
+      - /mnt/anthony-storage/config/netdata-config/netdatalib:/var/lib/netdata
+      - /mnt/anthony-storage/config/netdata-config/netdatacache:/var/cache/netdata
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/os-release:/host/etc/os-release:ro

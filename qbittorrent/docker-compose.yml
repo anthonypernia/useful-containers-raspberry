@@ -6,13 +6,16 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
-      - WEBUI_PORT=8080
+      - TZ=America/Argentina/Buenos_Aires
+      - WEBUI_PORT=8888
     volumes:
       - /mnt/anthony-storage/config/qbittorrent_config:/config
       - /mnt/anthony-storage/downloads:/downloads
     ports:
-      - 8080:8080
+      - 8888:8888
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+
+#user admin
+#pass adminadmin

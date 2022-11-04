@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Argentina/Buenos_Aires
+    volumes:
+      - /mnt/anthony-storage/config/heindall-config:/config
+    ports:
+      - 9997:80
+      - 443:443
+    restart: unless-stopped
