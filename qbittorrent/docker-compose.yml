@@ -9,13 +9,13 @@ services:
       - TZ=America/Argentina/Buenos_Aires
       - WEBUI_PORT=8888
     volumes:
-      - /mnt/anthony-storage/config/qbittorrent_config:/config
-      - /mnt/anthony-storage/downloads:/downloads
+      - ${CONFIG}/qbittorrent-config:/config
+      - ${DOWNLOADS}:/downloads
     ports:
       - 8888:8888
       - 6881:6881
       - 6881:6881/udp
-    restart: unless-stopped
+    restart: always
 
 #user admin
 #pass adminadmin

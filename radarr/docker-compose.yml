@@ -8,9 +8,9 @@ services:
       - PGID=1000
       - TZ=America/Argentina/Buenos_Aires
     volumes:
-      - /mnt/anthony-storage/config/radarr-config:/config
-      - /mnt/anthony-storage/movies:/movies #optional
-      - /mnt/anthony-storage/downloads:/downloads #optional
+      - ${CONFIG}/radarr-config:/config
+      - ${MOVIES}:/movies #optional
+      - ${DOWNLOADS}:/downloads #optional
     ports:
       - 7878:7878
-    restart: unless-stopped
+    restart: always

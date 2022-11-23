@@ -8,9 +8,9 @@ services:
       - PGID=1000
       - TZ=America/Argentina/Buenos_Aires
     volumes:
-      - /mnt/anthony-storage/config/sonarr-config:/config
-      - /mnt/anthony-storage/series:/tv #optional
-      - /mnt/anthony-storage/downloads:/downloads #optional
+      - ${CONFIG}/sonarr-config:/config
+      - ${SERIES}:/tv #optional
+      - ${DOWNLOADS}:/downloads #optional
     ports:
       - 8989:8989
-    restart: unless-stopped
+    restart: always

@@ -4,7 +4,7 @@ services:
   samba:
     image: dperson/samba:rpi
     restart: always
-    command: '-u "anthony;anthony" -s "media;/media;yes;no" -s "tvshows;/tvshows;yes;no" -s "downloads;/downloads;yes;no" -s "movies;/movies;yes;no" -s "series;/series;yes;no" -s "documents;/documents;yes;no"'
+    command: '-u "anthony;pernia" -s "media;/media;yes;no;no;anthony;anthony"'
     stdin_open: true
     tty: true
     environment:
@@ -13,10 +13,10 @@ services:
       - 139:130
       - 445:445
     volumes:
-      - /usr/share/zoneinfo/America/Argentina/Buenos_Aires:/etc/localtime
-      - /mnt/anthony-storage/media:/media
-      - /mnt/anthony-storage/movies:/movies
-      - /mnt/anthony-storage/series:/series
-      - /mnt/anthony-storage/downloads:/downloads
-      - /mnt/anthony-storage/documents:/documents
-      - /mnt/anthony-storage/tvshows:/tvshows
+      - ${LOCALTIME}:/etc/localtime
+      - ${MOVIES}:/media/movies
+      - ${SERIES}:/media/series
+      - ${DOWNLOADS}:/media/downloads
+      - ${DOCUMENTS}:/media/documents
+      - ${TVSHOWS}:/media/tvshows
+      - ${OTHERS}:/media/others

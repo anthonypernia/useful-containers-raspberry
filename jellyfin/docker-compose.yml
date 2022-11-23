@@ -9,8 +9,8 @@ services:
       - TZ=America/Argentina/Buenos_Aires
       - JELLYFIN_PublishedServerUrl=192.168.1.7 #optional
     volumes:
-      - /mnt/anthony-storage/config/jellyfin_config/config:/config
-      - /mnt/anthony-storage/config/jellyfin_config/cache:/cache
+      - ${CONFIG}/jellyfin_config/config:/config
+      - ${CONFIG}/jellyfin_config/cache:/cache
       - /mnt/anthony-storage/tvshows:/data/tvshows
       - /mnt/anthony-storage/movies:/data/movies
       - /mnt/anthony-storage/media:/data/media
